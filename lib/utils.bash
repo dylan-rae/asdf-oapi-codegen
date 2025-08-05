@@ -68,7 +68,7 @@ install_version() {
     export GOBIN="$install_path"
     if [ "$major" = "1" ]; then
       go install "$GO_DEEPMAP_V1_PACKAGE"@"$version" || fail "An error occurred while installing $TOOL_NAME $version."
-    elif [ "$major" = "2" ] && ([ "$minor" = "0" ] || [ "$minor" = "1" ] || [ "$minor" = "2" ]); then
+    elif [ "$major" = "2" ] && ([ "$minor" -lt "3" ]); then
       go install "$GO_DEEPMAP_V2_PACKAGE"@"$version" || fail "An error occurred while installing $TOOL_NAME $version."
     else
       go install "$GO_V2_PACKAGE"@"$version" || fail "An error occurred while installing $TOOL_NAME $version."
